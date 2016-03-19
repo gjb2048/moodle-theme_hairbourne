@@ -18,7 +18,8 @@
  * HairBourne theme.
  *
  * @package    theme_hairbourne
- * @copyright  &copy; 2016-onwards G J Barnard in respect to modifications of the CleanM theme by Urs Hunkler {@link urs.hunkler@unodo.de}.
+ * @copyright  &copy; 2016-onwards G J Barnard in respect to modifications of the CleanM theme by
+ *             Urs Hunkler {@link urs.hunkler@unodo.de}.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}.
  * @copyright  2015 eFaktor.
  * @author     Original author: Urs Hunkler {@link urs.hunkler@unodo.de}.
@@ -41,14 +42,14 @@ $THEME->csspostprocess = 'theme_hairbourne_process_css';
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(
-//        'file' => 'columns1.php',
+        // 'file' => 'columns1.php',
         'file' => 'layout.php',
         'renderable' => 'columns1_layout',
         'regions' => array(),
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
-//        'file' => 'columns3.php',
+        // 'file' => 'columns3.php',
         'file' => 'layout.php',
         'renderable' => 'columns3_layout',
         'regions' => array('side-pre', 'side-post'),
@@ -56,7 +57,7 @@ $THEME->layouts = array(
     ),
     // Main course page.
     'course' => array(
-//        'file' => 'columns3.php',
+        // 'file' => 'columns3.php',
         'file' => 'layout.php',
         'renderable' => 'columns3_layout',
         'regions' => array('side-pre', 'side-post'),
@@ -64,7 +65,7 @@ $THEME->layouts = array(
         'options' => array('langmenu' => true),
     ),
     'coursecategory' => array(
-//        'file' => 'columns3.php',
+        // 'file' => 'columns3.php',
         'file' => 'layout.php',
         'renderable' => 'columns3_layout',
         'regions' => array('side-pre', 'side-post'),
@@ -72,7 +73,7 @@ $THEME->layouts = array(
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
-//        'file' => 'columns3.php',
+        // 'file' => 'columns3.php',
         'file' => 'layout.php',
         'renderable' => 'columns3_layout',
         'regions' => array('side-pre', 'side-post'),
@@ -80,7 +81,7 @@ $THEME->layouts = array(
     ),
     // The site home page.
     'frontpage' => array(
-//        'file' => 'columns3.php',
+        // 'file' => 'columns3.php',
         'file' => 'layout.php',
         'renderable' => 'columns3_layout',
         'regions' => array('side-pre', 'side-post'),
@@ -89,7 +90,7 @@ $THEME->layouts = array(
     ),
     // Server administration scripts.
     'admin' => array(
-//        'file' => 'columns2.php',
+        // 'file' => 'columns2.php',
         'file' => 'layout.php',
         'renderable' => 'columns2_layout',
         'regions' => array('side-pre'),
@@ -97,7 +98,7 @@ $THEME->layouts = array(
     ),
     // My dashboard page.
     'mydashboard' => array(
-//        'file' => 'columns3.php',
+        // 'file' => 'columns3.php',
         'file' => 'layout.php',
         'renderable' => 'columns3_layout',
         'regions' => array('side-pre', 'side-post'),
@@ -106,14 +107,14 @@ $THEME->layouts = array(
     ),
     // My public page.
     'mypublic' => array(
-//        'file' => 'columns3.php',
+        // 'file' => 'columns3.php',
         'file' => 'layout.php',
         'renderable' => 'columns3_layout',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
     ),
     'login' => array(
-//        'file' => 'columns1.php',
+        // 'file' => 'columns1.php',
         'file' => 'layout.php',
         'renderable' => 'columns1_layout',
         'regions' => array(),
@@ -123,14 +124,14 @@ $THEME->layouts = array(
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
         'file' => 'popup.php',
-//        'file' => 'layout.php',
+        // 'file' => 'layout.php',
         'renderable' => 'popup_layout',
         'regions' => array(),
         'options' => array('nofooter' => true, 'nonavbar' => true),
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(
-//        'file' => 'columns1.php',
+        // 'file' => 'columns1.php',
         'file' => 'layout.php',
         'renderable' => 'columns1_layout',
         'regions' => array(),
@@ -138,7 +139,7 @@ $THEME->layouts = array(
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
     'embedded' => array(
-//        'file' => 'embedded.php',
+        // 'file' => 'embedded.php',
         'file' => 'layout.php',
         'renderable' => 'embedded_layout',
         'regions' => array()
@@ -147,14 +148,14 @@ $THEME->layouts = array(
     // This must not have any blocks, links, or API calls that would lead to database or cache interaction.
     // Please be extremely careful if you are modifying this layout.
     'maintenance' => array(
-//        'file' => 'maintenance.php',
+        // 'file' => 'maintenance.php',
         'file' => 'layout.php',
         'renderable' => 'maintenance_layout',
         'regions' => array(),
     ),
     // Should display the content and basic headers only.
     'print' => array(
-//        'file' => 'columns1.php',
+        // 'file' => 'columns1.php',
         'file' => 'layout.php',
         'renderable' => 'columns1_layout',
         'regions' => array(),
@@ -162,14 +163,14 @@ $THEME->layouts = array(
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
-//        'file' => 'embedded.php',
+        // 'file' => 'embedded.php',
         'file' => 'layout.php',
         'renderable' => 'embedded_layout',
         'regions' => array(),
     ),
     // The pagelayout used for reports.
     'report' => array(
-//        'file' => 'columns2.php',
+        // 'file' => 'columns2.php',
         'file' => 'layout.php',
         'renderable' => 'columns2_layout',
         'regions' => array('side-pre'),
@@ -177,7 +178,7 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(
-//        'file' => 'secure.php',
+        // 'file' => 'secure.php',
         'file' => 'layout.php',
         'renderable' => 'secure_layout',
         'regions' => array('side-pre', 'side-post'),

@@ -18,7 +18,8 @@
  * HairBourne theme.
  *
  * @package    theme_hairbourne
- * @copyright  &copy; 2016-onwards G J Barnard in respect to modifications of the CleanM theme by Urs Hunkler {@link urs.hunkler@unodo.de}.
+ * @copyright  &copy; 2016-onwards G J Barnard in respect to modifications of the CleanM theme by
+ *             Urs Hunkler {@link urs.hunkler@unodo.de}.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}.
  * @copyright  2015 eFaktor.
  * @author     Original author: Urs Hunkler {@link urs.hunkler@unodo.de}.
@@ -60,7 +61,7 @@ class base_layout implements renderable, templatable {
 
         $data = new stdClass();
 
-        // Add the page data from the theme settings
+        // Add the page data from the theme settings.
         $data->html_navbarclass = '';
         if (!empty($PAGE->theme->settings->invert)) {
             $data->html_navbarclass = ' navbar-inverse';
@@ -78,7 +79,7 @@ class base_layout implements renderable, templatable {
                 format_text($PAGE->theme->settings->footnote) . '</div>';
         }
 
-        // Add the other common page data
+        // Add the other common page data.
         $data->doctype = $this->doctype;
         $data->htmlattributes = $output->htmlattributes();
         $data->page_title = $output->page_title();

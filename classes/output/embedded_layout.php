@@ -18,7 +18,8 @@
  * HairBourne theme.
  *
  * @package    theme_hairbourne
- * @copyright  &copy; 2016-onwards G J Barnard in respect to modifications of the CleanM theme by Urs Hunkler {@link urs.hunkler@unodo.de}.
+ * @copyright  &copy; 2016-onwards G J Barnard in respect to modifications of the CleanM theme by
+ *             Urs Hunkler {@link urs.hunkler@unodo.de}.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}.
  * @copyright  2015 eFaktor.
  * @author     Original author: Urs Hunkler {@link urs.hunkler@unodo.de}.
@@ -49,8 +50,7 @@ class embedded_layout extends base_layout implements renderable, templatable {
 
         $data->body_attributes = $output->body_attributes();
 
-        $data->pagelayout =
-            $output->render_from_template('theme_hairbourne/embedded', $data);
+        $data->pagelayout = $output->render_from_template('theme_hairbourne/embedded', $data);
         return $data;
     }
 }
