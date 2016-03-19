@@ -59,6 +59,11 @@ class base_layout implements renderable, templatable {
     public function export_for_template(renderer_base $output) {
         global $CFG, $SITE, $PAGE;
 
+        if (!$PAGE->has_set_url()) {
+            $thispageurl = new \moodle_url(\qualified_me());
+            $PAGE->set_url($thispageurl, $thispageurl->params());
+        }
+
         $data = new stdClass();
 
         // Add the page data from the theme settings.
@@ -76,7 +81,7 @@ class base_layout implements renderable, templatable {
         $data->html_footnote = '';
         if (!empty($PAGE->theme->settings->footnote)) {
             $data->html_footnote = '<div class="footnote text-center">' .
-                format_text($PAGE->theme->settings->footnote) . '</div>';
+                format_text($PAGE->theme->settings->footnote).'</div>';
         }
 
         // Add the other common page data.
