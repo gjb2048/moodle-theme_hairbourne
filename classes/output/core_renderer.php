@@ -28,16 +28,14 @@
 
 namespace theme_hairbourne\output;
 
-defined('MOODLE_INTERNAL') || die;
-
-use theme_bootstrapbase_core_renderer;
+require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');  // Urrgh, but it works for child themes.
 
 /**
  * Class containing data for mustache layouts
  *
  * @package         theme_hairbourne
  */
-class renderer extends theme_bootstrapbase_core_renderer {
+class core_renderer extends \theme_bootstrapbase_core_renderer {
     /**
      * Defer to template.
      *

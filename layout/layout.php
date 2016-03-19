@@ -27,7 +27,7 @@
  */
 
 // Get the renderer for this plugin.
-$output = $PAGE->get_renderer('theme_hairbourne');
+$output = $PAGE->get_renderer('theme_hairbourne', 'core');
 
 $contextcourse = context_course::instance(SITEID);
 $doctype = $OUTPUT->doctype();
