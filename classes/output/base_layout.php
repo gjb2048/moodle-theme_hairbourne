@@ -66,12 +66,6 @@ class base_layout implements renderable, templatable {
 
         $data = new stdClass();
 
-        // Add the page data from the theme settings.
-        $data->html_navbarclass = '';
-        if (!empty($PAGE->theme->settings->invert)) {
-            $data->html_navbarclass = ' navbar-inverse';
-        }
-
         if (!empty($PAGE->theme->settings->logo)) {
             $data->html_heading = '<div class="logo"></div>';
         } else {
@@ -91,12 +85,6 @@ class base_layout implements renderable, templatable {
         $data->favicon = $output->favicon();
         $data->standard_head_html = $output->standard_head_html();
         $data->standard_top_of_body_html = $output->standard_top_of_body_html();
-        $data->wwwroot = $CFG->wwwroot;
-        $data->shortname = format_string($SITE->shortname, true,
-            array('context' => $this->contextcourse));
-        $data->user_menu = $output->user_menu();
-        $data->custom_menu = $output->custom_menu();
-        $data->page_heading_menu = $output->page_heading_menu();
         $data->navbar = $output->navbar();
         $data->page_heading_button = $output->page_heading_button();
         $data->course_header = $output->course_header();

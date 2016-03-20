@@ -36,6 +36,13 @@ require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php')
  * @package         theme_hairbourne
  */
 class core_renderer extends \theme_bootstrapbase_core_renderer {
+    protected $contextcourse = null;
+
+    public function __construct(\moodle_page $page, $target) {
+        parent::__construct($page, $target);
+        $this->contextcourse = \context_course::instance(SITEID);
+    }
+
     /**
      * Defer to template.
      *
@@ -106,5 +113,30 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     public function render_secure_layout(secure_layout $page) {
         $data = $page->export_for_template($this);
         return parent::render_from_template('theme_hairbourne/wrapper_layout', $data);
+    }
+
+    public function header_tile_data() {
+        global $CFG, $SITE;
+        $data = new \stdClass();
+
+        // Add the page data from the theme settings.
+        $data->html_navbarclass = '';
+        if (!empty($PAGE->theme->settings->invert)) {
+            $data->html_navbarclass = ' navbar-inverse';
+        }
+        $data->wwwroot = $CFG->wwwroot;
+        $data->shortname = \format_string($SITE->shortname, true,
+            array('context' => $this->contextcourse));
+
+        $data->user_menu = $this->user_menu();
+        $data->custom_menu = $this->custom_menu();
+        $data->page_heading_menu = $this->page_heading_menu();
+
+        return $data;
+    }
+
+    public function header_tile() {
+        $data = $this->header_tile_data();
+        return parent::render_from_template('theme_hairbourne/tile_header', $data);        
     }
 }

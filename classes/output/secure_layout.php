@@ -61,6 +61,7 @@ class secure_layout extends base_layout implements renderable, templatable {
         $data = parent::export_for_template($output);
 
         $data->body_attributes = $output->body_attributes();
+        $data->header_tile = $output->header_tile();
         $data->regionmainbox = $regionmainbox;
         $data->regionmain = $regionmain;
         $data->blocks_side_pre = $output->blocks('side-pre', $sidepre);

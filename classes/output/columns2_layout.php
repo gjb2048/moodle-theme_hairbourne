@@ -59,6 +59,7 @@ class columns2_layout extends base_layout implements renderable, templatable {
         $data->body_attributes = $output->body_attributes('two-column');
         $data->regionmain = $regionmain;
         $data->blocks_side_pre = $output->blocks('side-pre', $sidepre);
+        $data->header_tile = $output->header_tile();
 
         $data->pagelayout = $output->render_from_template('theme_hairbourne/columns2', $data);
 

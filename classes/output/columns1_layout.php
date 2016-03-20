@@ -50,6 +50,8 @@ class columns1_layout extends base_layout implements renderable, templatable {
 
         $data->body_attributes = $output->body_attributes();
 
+        $data->header_tile = $output->header_tile();
+
         $data->pagelayout = $output->render_from_template('theme_hairbourne/columns1', $data);
 
         return $data;
