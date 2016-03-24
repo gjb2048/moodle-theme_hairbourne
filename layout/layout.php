@@ -37,4 +37,4 @@ $output = $PAGE->get_renderer('theme_hairbourne', 'core');
 //$page = new $renderable($contextcourse, $doctype);
 
 //echo $output->render($page);
-echo $output->render_layout();
+echo $output->render_wrapper_template();
