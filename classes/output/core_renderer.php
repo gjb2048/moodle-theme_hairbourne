@@ -50,7 +50,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         if (!$this->page->has_set_url()) {
             $thispageurl = new \moodle_url(\qualified_me());
-            $PAGE->set_url($thispageurl, $thispageurl->params());
+            $this->page->set_url($thispageurl, $thispageurl->params());
         }
 
         $data = new \stdClass();
