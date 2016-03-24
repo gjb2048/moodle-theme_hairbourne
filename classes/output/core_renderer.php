@@ -36,11 +36,67 @@ require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php')
  * @package         theme_hairbourne
  */
 class core_renderer extends \theme_bootstrapbase_core_renderer {
-    protected $contextcourse = null;
+    protected $contextcourse = null;  // Not sure this is needed.
+    protected $doctype = null;
 
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
         $this->contextcourse = \context_course::instance(SITEID);
+        $this->doctype = $this->doctype();
+    }
+
+    protected function render_base_layout($layout) {
+        global $CFG, $SITE;
+
+        if (!$this->page->has_set_url()) {
+            $thispageurl = new \moodle_url(\qualified_me());
+            $PAGE->set_url($thispageurl, $thispageurl->params());
+        }
+
+        $data = new \stdClass();
+
+        if (!empty($this->page->theme->settings->logo)) {
+            $data->html_heading = '<div class="logo"></div>';
+        } else {
+            $data->html_heading = $this->page_heading();
+        }
+
+        $data->html_footnote = '';
+        if (!empty($this->page->theme->settings->footnote)) {
+            $data->html_footnote = '<div class="footnote text-center">' .
+                format_text($this->page->theme->settings->footnote).'</div>';
+        }
+
+        // Add the other common page data.
+        $data->doctype = $this->doctype;
+        $data->htmlattributes = $this->htmlattributes();
+        $data->body_attributes = $this->body_attributes();
+        $data->page_title = $this->page_title();
+        $data->favicon = $this->favicon();
+        $data->standard_head_html = $this->standard_head_html();
+        $data->standard_top_of_body_html = $this->standard_top_of_body_html();
+        $data->navbar = $this->navbar();
+        $data->page_heading_button = $this->page_heading_button();
+        $data->course_header = $this->course_header();
+        $data->course_content_header = $this->course_content_header();
+        $data->main_content = $this->main_content();
+        $data->course_content_footer = $this->course_content_footer();
+        $data->course_footer = $this->course_footer();
+        $data->page_doc_link = $this->page_doc_link();
+        $data->login_info = $this->login_info();
+        $data->home_link = $this->home_link();
+        $data->standard_footer_html = $this->standard_footer_html();
+        $data->standard_end_of_body_html = $this->standard_end_of_body_html();
+
+        return $data;
+    }
+
+    protected function render_embedded_layout($layout) {
+        $data = $this->render_the_layout('base');
+
+        $data->pagelayout = $this->render_from_template('theme_hairbourne/'.$layout, $data);
+
+        return $data;
     }
 
     /**
@@ -50,9 +106,12 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      *
      * @return string html for the page
      */
-    public function render_embedded_layout(embedded_layout $page) {
-        $data = $page->export_for_template($this);
-        return parent::render_from_template('theme_hairbourne/wrapper_layout', $data);
+    protected function render_maintenance_layout($layout) {
+        $data = $this->render_the_layout('base');
+
+        $data->pagelayout = $this->render_from_template('theme_hairbourne/'.$layout, $data);
+
+        return $data;
     }
 
     /**
@@ -62,9 +121,14 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      *
      * @return string html for the page
      */
-    public function render_maintenance_layout(maintenance_layout $page) {
-        $data = $page->export_for_template($this);
-        return parent::render_from_template('theme_hairbourne/wrapper_layout', $data);
+    protected function render_columns1_layout($layout) {
+        $data = $this->render_the_layout('base');
+
+        $data->header_tile = $this->render_the_layout('tile_header');
+
+        $data->pagelayout = $this->render_from_template('theme_hairbourne/'.$layout, $data);
+
+        return $data;
     }
 
     /**
@@ -74,9 +138,25 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      *
      * @return string html for the page
      */
-    public function render_columns1_layout(columns1_layout $page) {
-        $data = $page->export_for_template($this);
-        return parent::render_from_template('theme_hairbourne/wrapper_layout', $data);
+    protected function render_columns2_layout($layout) {
+        // Set default (LTR) layout mark-up for a two column page (side-pre-only).
+        $regionmain = 'span9 pull-right';
+        $sidepre = 'span3 desktop-first-column';
+        // Reset layout mark-up for RTL languages.
+        if (right_to_left()) {
+            $regionmain = 'span9';
+            $sidepre = 'span3 pull-right';
+        }
+
+        $data = $this->render_the_layout('base');
+
+        $data->regionmain = $regionmain;
+        $data->blocks_side_pre = $this->blocks('side-pre', $sidepre);
+        $data->header_tile = $this->render_the_layout('tile_header');
+
+        $data->pagelayout = $this->render_from_template('theme_hairbourne/'.$layout, $data);
+
+        return $data;
     }
 
     /**
@@ -86,9 +166,30 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      *
      * @return string html for the page
      */
-    public function render_columns2_layout(columns2_layout $page) {
-        $data = $page->export_for_template($this);
-        return parent::render_from_template('theme_hairbourne/wrapper_layout', $data);
+    protected function render_columns3_layout($layout) {
+        $regionmainbox = 'span9';
+        $regionmain = 'span8 pull-right';
+        $sidepre = 'span4 desktop-first-column';
+        $sidepost = 'span3 pull-right';
+        // Reset layout mark-up for RTL languages.
+        if (right_to_left()) {
+            $regionmain = 'span8';
+            $regionmainbox = 'span9 pull-right';
+            $sidepre = 'span4 pull-right';
+            $sidepost = 'span3 desktop-first-column';
+        }
+
+        $data = $this->render_the_layout('base');
+
+        $data->regionmainbox = $regionmainbox;
+        $data->regionmain = $regionmain;
+        $data->blocks_side_pre = $this->blocks('side-pre', $sidepre);
+        $data->blocks_side_post = $this->blocks('side-post', $sidepost);
+        $data->header_tile = $this->render_the_layout('tile_header');
+
+        $data->pagelayout = $this->render_from_template('theme_hairbourne/'.$layout, $data);
+
+        return $data;
     }
 
     /**
@@ -98,30 +199,56 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      *
      * @return string html for the page
      */
-    public function render_columns3_layout(columns3_layout $page) {
-        $data = $page->export_for_template($this);
-        return parent::render_from_template('theme_hairbourne/wrapper_layout', $data);
+    protected function render_secure_layout($layout) {
+        // Set default (LTR) layout mark-up for a three column page.
+        $regionmainbox = 'span9';
+        $regionmain = 'span8 pull-right';
+        $sidepre = 'span4 desktop-first-column';
+        $sidepost = 'span3 pull-right';
+        // Reset layout mark-up for RTL languages.
+        if (right_to_left()) {
+            $regionmainbox = 'span9 pull-right';
+            $regionmain = 'span8';
+            $sidepre = 'span4 pull-right';
+            $sidepost = 'span3 desktop-first-column';
+        }
+
+        $data = $this->render_the_layout('base');
+
+        $data->regionmainbox = $regionmainbox;
+        $data->regionmain = $regionmain;
+        $data->blocks_side_pre = $this->blocks('side-pre', $sidepre);
+        $data->blocks_side_post = $this->blocks('side-post', $sidepost);
+        $data->header_tile = $this->render_the_layout('tile_header');
+
+        $data->pagelayout = $this->render_from_template('theme_hairbourne/'.$layout, $data);
+
+        return $data;
     }
 
-    /**
-     * Defer to template.
-     *
-     * @param $page
-     *
-     * @return string html for the page
-     */
-    public function render_secure_layout(secure_layout $page) {
-        $data = $page->export_for_template($this);
-        return parent::render_from_template('theme_hairbourne/wrapper_layout', $data);
+    // Stuff.
+    public function render_layout() {
+        $layout = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+
+        return parent::render_from_template('theme_hairbourne/wrapper_layout', $this->render_the_layout($layout));
     }
 
-    public function header_tile_data() {
+    protected function render_the_layout($layout) {
+        $callablemethod = 'render_'.$layout.'_layout';
+
+        if (method_exists($this, $callablemethod)) {
+            return $this->$callablemethod($layout);
+        }
+        throw new coding_exception('Can not render layout, renderer method ('.$callablemethod.') not found.');
+    }
+
+    protected function render_tile_header_layout($layout) {
         global $CFG, $SITE;
         $data = new \stdClass();
 
         // Add the page data from the theme settings.
         $data->html_navbarclass = '';
-        if (!empty($PAGE->theme->settings->invert)) {
+        if (!empty($this->page->theme->settings->invert)) {
             $data->html_navbarclass = ' navbar-inverse';
         }
         $data->wwwroot = $CFG->wwwroot;
@@ -132,11 +259,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $data->custom_menu = $this->custom_menu();
         $data->page_heading_menu = $this->page_heading_menu();
 
-        return $data;
-    }
-
-    public function header_tile() {
-        $data = $this->header_tile_data();
-        return parent::render_from_template('theme_hairbourne/tile_header', $data);        
+        return parent::render_from_template('theme_hairbourne/'.$layout, $data);        
     }
 }

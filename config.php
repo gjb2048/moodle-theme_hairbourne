@@ -44,14 +44,16 @@ $THEME->layouts = array(
     'base' => array(
         // 'file' => 'columns1.php',
         'file' => 'layout.php',
-        'renderable' => 'columns1_layout',
+        //'renderable' => 'columns1_layout',
+        'mustache' => 'columns1',
         'regions' => array(),
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
         // 'file' => 'columns3.php',
         'file' => 'layout.php',
-        'renderable' => 'columns3_layout',
+        //'renderable' => 'columns3_layout',
+        'mustache' => 'columns3',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
     ),
@@ -59,7 +61,8 @@ $THEME->layouts = array(
     'course' => array(
         // 'file' => 'columns3.php',
         'file' => 'layout.php',
-        'renderable' => 'columns3_layout',
+        //'renderable' => 'columns3_layout',
+        'mustache' => 'columns3',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
@@ -67,7 +70,8 @@ $THEME->layouts = array(
     'coursecategory' => array(
         // 'file' => 'columns3.php',
         'file' => 'layout.php',
-        'renderable' => 'columns3_layout',
+        //'renderable' => 'columns3_layout',
+        'mustache' => 'columns3',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
     ),
@@ -75,7 +79,8 @@ $THEME->layouts = array(
     'incourse' => array(
         // 'file' => 'columns3.php',
         'file' => 'layout.php',
-        'renderable' => 'columns3_layout',
+        //'renderable' => 'columns3_layout',
+        'mustache' => 'columns3',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
     ),
@@ -83,7 +88,8 @@ $THEME->layouts = array(
     'frontpage' => array(
         // 'file' => 'columns3.php',
         'file' => 'layout.php',
-        'renderable' => 'columns3_layout',
+        //'renderable' => 'columns3_layout',
+        'mustache' => 'columns3',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => true),
@@ -92,7 +98,8 @@ $THEME->layouts = array(
     'admin' => array(
         // 'file' => 'columns2.php',
         'file' => 'layout.php',
-        'renderable' => 'columns2_layout',
+        //'renderable' => 'columns2_layout',
+        'mustache' => 'columns3',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
@@ -100,7 +107,8 @@ $THEME->layouts = array(
     'mydashboard' => array(
         // 'file' => 'columns3.php',
         'file' => 'layout.php',
-        'renderable' => 'columns3_layout',
+        //'renderable' => 'columns3_layout',
+        'mustache' => 'columns3',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
@@ -109,14 +117,16 @@ $THEME->layouts = array(
     'mypublic' => array(
         // 'file' => 'columns3.php',
         'file' => 'layout.php',
-        'renderable' => 'columns3_layout',
+        //'renderable' => 'columns3_layout',
+        'mustache' => 'columns3',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
     ),
     'login' => array(
         // 'file' => 'columns1.php',
         'file' => 'layout.php',
-        'renderable' => 'columns1_layout',
+        //'renderable' => 'columns1_layout',
+        'mustache' => 'columns1',
         'regions' => array(),
         'options' => array('langmenu' => true),
     ),
@@ -125,7 +135,8 @@ $THEME->layouts = array(
     'popup' => array(
         'file' => 'popup.php',
         // 'file' => 'layout.php',
-        'renderable' => 'popup_layout',
+        //'renderable' => 'popup_layout',
+        'mustache' => 'popup',
         'regions' => array(),
         'options' => array('nofooter' => true, 'nonavbar' => true),
     ),
@@ -133,7 +144,8 @@ $THEME->layouts = array(
     'frametop' => array(
         // 'file' => 'columns1.php',
         'file' => 'layout.php',
-        'renderable' => 'columns1_layout',
+        //'renderable' => 'columns1_layout',
+        'mustache' => 'columns1',
         'regions' => array(),
         'options' => array('nofooter' => true, 'nocoursefooter' => true),
     ),
@@ -141,7 +153,8 @@ $THEME->layouts = array(
     'embedded' => array(
         // 'file' => 'embedded.php',
         'file' => 'layout.php',
-        'renderable' => 'embedded_layout',
+        //'renderable' => 'embedded_layout',
+        'mustache' => 'embedded',
         'regions' => array()
     ),
     // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
@@ -150,14 +163,16 @@ $THEME->layouts = array(
     'maintenance' => array(
         // 'file' => 'maintenance.php',
         'file' => 'layout.php',
-        'renderable' => 'maintenance_layout',
+        //'renderable' => 'maintenance_layout',
+        'mustache' => 'maintenance',
         'regions' => array(),
     ),
     // Should display the content and basic headers only.
     'print' => array(
         // 'file' => 'columns1.php',
         'file' => 'layout.php',
-        'renderable' => 'columns1_layout',
+        //'renderable' => 'columns1_layout',
+        'mustache' => 'columns1',
         'regions' => array(),
         'options' => array('nofooter' => true, 'nonavbar' => false),
     ),
@@ -165,14 +180,16 @@ $THEME->layouts = array(
     'redirect' => array(
         // 'file' => 'embedded.php',
         'file' => 'layout.php',
-        'renderable' => 'embedded_layout',
+        //'renderable' => 'embedded_layout',
+        'mustache' => 'embedded',
         'regions' => array(),
     ),
     // The pagelayout used for reports.
     'report' => array(
         // 'file' => 'columns2.php',
         'file' => 'layout.php',
-        'renderable' => 'columns2_layout',
+        //'renderable' => 'columns2_layout',
+        'mustache' => 'columns2',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),
@@ -180,7 +197,8 @@ $THEME->layouts = array(
     'secure' => array(
         // 'file' => 'secure.php',
         'file' => 'layout.php',
-        'renderable' => 'secure_layout',
+        //'renderable' => 'secure_layout',
+        'mustache' => 'secure',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre'
     ),

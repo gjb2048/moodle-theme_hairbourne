@@ -29,11 +29,12 @@
 // Get the renderer for this plugin.
 $output = $PAGE->get_renderer('theme_hairbourne', 'core');
 
-$contextcourse = context_course::instance(SITEID);
-$doctype = $OUTPUT->doctype();
+//$contextcourse = context_course::instance(SITEID);
+//$doctype = $OUTPUT->doctype();
 
 // Define the renderable for the layout page.
-$renderable = '\\theme_hairbourne\\output\\'.$PAGE->theme->layouts[$PAGE->pagelayout]['renderable'];
-$page = new $renderable($contextcourse, $doctype);
+//$renderable = '\\theme_hairbourne\\output\\'.$PAGE->theme->layouts[$PAGE->pagelayout]['renderable'];
+//$page = new $renderable($contextcourse, $doctype);
 
-echo $output->render($page);
+//echo $output->render($page);
+echo $output->render_layout();
