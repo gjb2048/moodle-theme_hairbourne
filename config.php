@@ -99,7 +99,7 @@ $THEME->layouts = array(
         // 'file' => 'columns2.php',
         'file' => 'layout.php',
         //'renderable' => 'columns2_layout',
-        'mustache' => 'columns3',
+        'mustache' => 'columns2',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre',
     ),

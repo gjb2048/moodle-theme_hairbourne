@@ -36,13 +36,9 @@ require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php')
  * @package         theme_hairbourne
  */
 class core_renderer extends \theme_bootstrapbase_core_renderer {
-    protected $contextcourse = null;  // Not sure this is needed.
-    protected $doctype = null;
 
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
-        $this->contextcourse = \context_course::instance(SITEID);
-        $this->doctype = $this->doctype();
     }
 
     protected function get_base_data() {
@@ -211,7 +207,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
 
         $data = new \stdClass();
-        $data->doctype = $this->doctype;
         $data->htmlattributes = $this->htmlattributes();
         $data->page_title = $this->page_title();
         $data->favicon = $this->favicon();
@@ -244,7 +239,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         }
         $data->wwwroot = $CFG->wwwroot;
         $data->shortname = \format_string($SITE->shortname, true,
-            array('context' => $this->contextcourse));
+            array('context' => \context_course::instance(SITEID)));
 
         $data->user_menu = $this->user_menu();
         $data->custom_menu = $this->custom_menu();
